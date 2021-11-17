@@ -5,6 +5,19 @@ const Stack = contentstack.Stack({
   delivery_token: process.env.REACT_APP_DELIVERY_TOKEN,
   environment: process.env.REACT_APP_ENVIRONMENT,
   region: process.env.REACT_APP_REGION ? process.env.REACT_APP_REGION : "us",
+  live_preview: {
+    management_token: 'csa24746dcec04bbc5f4978016',
+    enable: true, 
+    host: 'api.contentstack.io',
+    stackDetails: {
+      apiKey: process.env.REACT_APP_APIKEY,
+    },
+    clientUrlParams: {
+      protocol: "https",
+      host: "app.contentstack.com",
+      port: 443,
+    },
+  }
 })
 
 if (process.env.REACT_APP_CUSTOM_HOST) {
