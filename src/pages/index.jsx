@@ -4,6 +4,9 @@ import Stack from '../sdk/entry';
 import Layout from '../components/layout';
 import RenderComponenets from '../components/render-components';
 
+import Stack, { onEntryChange } from "../sdk/entry";
+
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +18,7 @@ class Home extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  async updateData() {
     try {
       const result = await Stack.getEntryByUrl(
         'page',
@@ -38,6 +41,11 @@ class Home extends React.Component {
         error: { errorStatus: true, errorCode: 404, errorData: error },
       });
     }
+  }
+
+  async componentDidMount() {
+    onEntryChange(this.fetchData);
+    
   }
 
   render() {
