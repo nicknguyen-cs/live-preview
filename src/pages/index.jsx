@@ -52,6 +52,8 @@ class Home extends React.Component {
 
   render() {
     const { header, footer, entry, error } = this.state;
+    console.log(entry);
+
     const { history } = this.props;
     if (!error.errorStatus && entry) {
       return (
