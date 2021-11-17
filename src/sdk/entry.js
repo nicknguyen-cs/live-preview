@@ -18,8 +18,9 @@ const Stack = contentstack.Stack({
       host: "app.contentstack.com",
       port: 443,
     },
-  }
-})
+  },
+});
+Stack.setHost("app.contentstack.com");
 
 
 if (process.env.REACT_APP_CUSTOM_HOST) {
