@@ -1,4 +1,5 @@
 const contentstack = require("contentstack")
+import ContentstackLivePreview from "@contentstack/live-preview-utils";
 
 const Stack = contentstack.Stack({
   api_key: process.env.REACT_APP_APIKEY,
@@ -20,9 +21,14 @@ const Stack = contentstack.Stack({
   }
 })
 
+
 if (process.env.REACT_APP_CUSTOM_HOST) {
   Stack.setHost(process.env.REACT_APP_CUSTOM_HOST)
 }
+
+ContentstackLivePreview.init(Stack);
+
+
 export default {
   /**
    *
