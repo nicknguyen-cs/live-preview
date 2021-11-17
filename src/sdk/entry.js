@@ -81,3 +81,5 @@ export default {
     })
   },
 }
+
+export const onEntryChange = ContentstackLivePreview.onEntryChange;

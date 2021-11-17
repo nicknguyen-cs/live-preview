@@ -1,15 +1,15 @@
 import React from 'react';
-import Stack from '../sdk/entry';
+import Stack,  { onEntryChange } from '../sdk/entry';
 
 import Layout from '../components/layout';
 import RenderComponenets from '../components/render-components';
 
-import Stack, { onEntryChange } from "../sdk/entry";
 
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+    this.updateData = this.updateData.bind(this);
     this.state = {
       entry: undefined,
       header: undefined,
@@ -21,15 +21,17 @@ class Home extends React.Component {
   async updateData() {
     try {
       const result = await Stack.getEntryByUrl(
-        'page',
+        "page",
         this.props.location.pathname,
-        ['page_components.from_blog.featured_blogs']
+        ["page_components.from_blog.featured_blogs"]
       );
       const header = await Stack.getEntry(
-        'header',
-        'navigation_menu.page_reference'
+        "header",
+        "navigation_menu.page_reference"
       );
-      const footer = await Stack.getEntry('footer');
+      const footer = await Stack.getEntry("footer");
+
+
       this.setState({
         entry: result[0],
         header: header[0][0],
@@ -43,8 +45,8 @@ class Home extends React.Component {
     }
   }
 
-  async componentDidMount() {
-    onEntryChange(this.fetchData);
+  componentDidMount() {
+    onEntryChange(this.updateData);
     
   }
 
