@@ -20,7 +20,8 @@ const Stack = contentstack.Stack({
     },
   },
 });
-
+Stack.setHost('api.contentstack.io');
+console.log(Stack);
 
 if (process.env.REACT_APP_CUSTOM_HOST) {
   Stack.setHost(process.env.REACT_APP_CUSTOM_HOST)
